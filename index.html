@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VaultCity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="city"></canvas>
+
+    <!-- Top bar -->
+    <header class="hud topbar">
+      <div class="brand"><span class="glyph">🏙</span>Vault<span class="accent">City</span></div>
+      <select id="vaultSelector" class="vault-select"></select>
+      <span id="vaultName" class="loaded"></span>
+      <div class="topbar-actions">
+        <button id="openBtn" class="btn">Open vault</button>
+        <button id="refreshBtn" class="btn" disabled>↻</button>
+        <div id="liveDot" class="live" title="Live sync"></div>
+      </div>
+    </header>
+
+    <!-- Left: districts + legend -->
+    <aside id="left" class="hud panel left">
+      <div class="panel-head">Districts</div>
+      <div id="districts" class="district-list"></div>
+      <div class="panel-head" style="margin-top:12px">Legend</div>
+      <ul class="legend">
+        <li><span class="k">Height</span> ← link degree</li>
+        <li><span class="k">Glow</span> ← recent edit</li>
+        <li><span class="k">Roads</span> ← wikilinks</li>
+      </ul>
+    </aside>
+
+    <!-- Right: inspector (hidden by default) -->
+    <aside id="inspector" class="hud panel right" hidden>
+      <button id="closeInspector" class="close">×</button>
+      <div id="insTitle" class="ins-title"></div>
+      <div id="insFolder" class="ins-folder"></div>
+      <div class="stats">
+        <div><b id="sIn">0</b><span>in</span></div>
+        <div><b id="sOut">0</b><span>out</span></div>
+        <div><b id="sWords">0</b><span>words</span></div>
+      </div>
+      <div id="insTags" class="ins-tags"></div>
+      <div id="insPreview" class="preview"></div>
+    </aside>
+
+    <!-- Bottom: search + time slider -->
+    <footer class="hud bottombar">
+      <input id="search" class="search" placeholder="⌘K  Search notes…" />
+      <div class="time">
+        🌙 <input id="time" type="range" min="0" max="100" value="80" /> ☀️
+      </div>
+      <span id="cityMeta" class="meta"></span>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" hidden></div>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
